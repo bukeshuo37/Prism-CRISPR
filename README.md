@@ -92,7 +92,58 @@ GGGCGACTCAGACAGCGCATCGG,0.761833316032281,0.7382468
 
 These metrics evaluate agreement between predicted and true efficiencies.
 
+## Example Usage (Prism-be)
 
+### Example command
+
+```bash
+python predict.py ABE7 ABE7_test.csv ABE7_results.csv
+```
+
+### Arguments
+
+1. Model type:
+   - ABE7 → ABE7_best_model.pth
+   - ABE8e → ABE8e_best_model.pth
+   - ABEmax → ABEmax_best_model.pth
+   - BE4 → BE4_best_model.pth
+   - CBE4max → CBE4max_best_model.pth
+   - Target-AID → Target-AID_best_model.pth
+
+2. Input CSV file:
+   Example: `ABE7_test.csv`
+
+3. Output CSV file:
+   Example: `ABE7_results.csv`
+
+### Example Input CSV
+
+```csv
+target,outcome,pro
+TATGATCAGTGTCCAGTGTCTGG,TATGATCAGTGTCCAGTGTCTGG,0.8578737919272313
+TATGATCAGTGTCCAGTGTCTGG,TATGGTCAGTGTCCAGTGTCTGG,0.1290505969300739
+TATGATCAGTGTCCAGTGTCTGG,TATGATCGGTGTCCAGTGTCTGG,0.007959067652075
+TATGATCAGTGTCCAGTGTCTGG,TATGGTCGGTGTCCAGTGTCTGG,0.0051165434906196
+```
+
+### Example Output CSV
+
+```csv
+target,outcome,pro,pre_pro_ABE7
+TATGATCAGTGTCCAGTGTCTGG,TATGATCAGTGTCCAGTGTCTGG,0.8578737919272313,0.63151467
+TATGATCAGTGTCCAGTGTCTGG,TATGGTCAGTGTCCAGTGTCTGG,0.1290505969300739,0.20785686
+TATGATCAGTGTCCAGTGTCTGG,TATGATCGGTGTCCAGTGTCTGG,0.007959067652075,0.09222621
+TATGATCAGTGTCCAGTGTCTGG,TATGGTCGGTGTCCAGTGTCTGG,0.0051165434906196,0.026355669
+```
+
+### Output Description
+
+- `pre_pro_{model}`: editing outcome distributions
+- The script will also print:
+  - Pearson correlation coefficient
+  - Spearman correlation coefficient
+
+These metrics evaluate agreement between predicted and true efficiencies.
 
 
 
